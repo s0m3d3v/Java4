@@ -2,6 +2,7 @@ package oefenopdracht6.opdracht;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class FactuurRegelTest {
@@ -33,5 +34,4 @@ class FactuurRegelTest {
 		FactuurRegelTest factuurRegel = new FactuurRegelTest();
 		assertEquals("fiets", verwachteUitkomst);
 	}
-
 }
