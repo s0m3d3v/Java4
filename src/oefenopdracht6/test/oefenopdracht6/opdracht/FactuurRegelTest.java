@@ -32,7 +32,7 @@ class FactuurRegelTest {
 				"\nPer stuk: €" + 10.00 + " Excl. BTW (" + 21.0 + ")" +
 				"\nTotaal: €" + 24.20 + " Incl. BTW (" + 21.0 + ")";
 		FactuurRegelTest factuurRegel = new FactuurRegelTest();
-		assertEquals(factuurRegel.getFactuurRegel(), verwachteUitkomst);
+		assertEquals(factuurRegel, verwachteUitkomst);
 	}
 
 }
