@@ -12,9 +12,8 @@ class FactuurRegelTest {
 		FactuurRegel factuurregel = new FactuurRegel();
 		Product product = new Product();
 		product.setPrijs(10);
-		product.setOmschrijving("houten hamer");
-		// Kijk of er in ieder geval iets is veranderd, de regel mag niet leeg zijn
-		assertNotEquals("", factuurregel.getFactuurRegel());
+		product.setOmschrijving("fiets");
+		assertNotEquals("", factuurregel.getFactuurRegel());// Kijken of er iets is veranderd, de regel mag niet leeg
 	}
 
 	@Test
@@ -32,7 +31,7 @@ class FactuurRegelTest {
 				"\nPer stuk: €" + 10.00 + " Excl. BTW (" + 21.0 + ")" +
 				"\nTotaal: €" + 24.20 + " Incl. BTW (" + 21.0 + ")";
 		FactuurRegelTest factuurRegel = new FactuurRegelTest();
-		assertEquals(factuurRegel, verwachteUitkomst);
+		assertEquals("fiets", verwachteUitkomst);
 	}
 
 }
