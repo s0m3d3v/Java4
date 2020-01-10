@@ -1,6 +1,6 @@
 package oefenopdracht6.opdracht;
 
-public class FactuurRegel{
+public class FactuurRegel extends Product{
 	String factuurRegel;
 
 	public void setFactuurRegel(int aantal, Product product) {

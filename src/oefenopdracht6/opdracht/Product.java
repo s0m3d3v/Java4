@@ -11,7 +11,8 @@ public class Product {
 	public void setBelasting(double belasting) {
 		if (belasting > 0 && belasting <= 100) {
 			this.belasting = belasting;
-		} else { // belasting voldoet niet aan de eisen
+		} else {
+			//tax is niet voldaan
 			this.belasting = 0;
 		}
 	}

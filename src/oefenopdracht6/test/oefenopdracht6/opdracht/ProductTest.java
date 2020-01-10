@@ -10,7 +10,6 @@ import java.util.Locale;
 class ProductTest {
 	Product product;
 
-
 	@BeforeEach
 	void initObject() {
 		product = new Product();
