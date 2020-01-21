@@ -1,117 +1,69 @@
+//dit is de view, de enige taak van de view is om te zetten op display wat de gebruiker moet zien
+//er kan informatie in worden ingevoerd
+
 package eindopdracht;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class CalculatorView
-{
-	JButton oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn;
-	JButton sixBtn,sevenBtn, eightBtn, nineBtn, zeroBtn;
-	JButton addBtn, subtractBtn, multiplyBtn, divideBtn;
-	JButton resetBtn, equalsBtn;
+public class CalculatorView extends JFrame{
 
-	JTextField textFeild;
+	private JTextField firstNumber = new JTextField(10);
+	private JLabel additionLabel = new JLabel("+");
+	private JTextField secondNumber = new JTextField(10);
+	private JButton calculateButton = new JButton("Calculate");
+	private JTextField calcSolution = new JTextField(10);
 
-	JFrame frame;
+	CalculatorView(){
 
-	JPanel numbersPanel, signsPanel;
+//		zet de view op en voegt de components toe
 
-	CalculatorView()
-	{
-		frame = new JFrame("Simple Calculator");
-		frame.setSize(300,300);
-		frame.setLayout(new BorderLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel calcPanel = new JPanel();
 
-		textFeild = new JTextField(10);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600,200);
 
-		JPanel numbersPanel = new JPanel();
-		JPanel signsPanel = new JPanel();
+		calcPanel.add(firstNumber);
+		calcPanel.add(additionLabel);
+		calcPanel.add(secondNumber);
+		calcPanel.add(calculateButton);
+		calcPanel.add(calcSolution);
 
-		numbersPanel = numberPan(numbersPanel);
-		signsPanel = signPan(signsPanel);
+		this.add(calcPanel);
 
-		frame.add(textFeild,BorderLayout.PAGE_START);
-		frame.add(numbersPanel,BorderLayout.CENTER);
-		frame.add(signsPanel,BorderLayout.LINE_END);
-
-		frame.setResizable(false);
-		frame.setVisible(true);
+//		einde van components opzetten
 	}
 
-	//returns a matrix of buttons to represent the numbers
-	//on the calculator
-	JPanel numberPan(JPanel panel)
-	{
-		oneBtn = new JButton("1");
-		twoBtn = new JButton("2");
-		threeBtn = new JButton("3");
-		fourBtn= new JButton("4");
-		fiveBtn= new JButton("5");
-		sixBtn= new JButton("6");
-		sevenBtn= new JButton("7");
-		eightBtn= new JButton("8");
-		nineBtn= new JButton("9");
-		zeroBtn= new JButton("0");
+	public int getFirstNumber() {
 
-		panel.add(sevenBtn);
-		panel.add(eightBtn);
-		panel.add(nineBtn);
-		panel.add(fourBtn);
-		panel.add(fiveBtn);
-		panel.add(sixBtn);
-		panel.add(oneBtn);
-		panel.add(twoBtn);
-		panel.add(threeBtn);
-		panel.add(zeroBtn);
-
-		panel.setLayout(new GridLayout(3,4));
-
-		return panel;
+		return Integer.parseInt(firstNumber.getText());
 	}
 
-	//return a horizontal pattern of buttons to represent
-	//the mathematical signs of the calculator
-	JPanel signPan(JPanel panel)
-	{
-		addBtn= new JButton("+");
-		addBtn.setPreferredSize(new Dimension(10,10));
-		subtractBtn= new JButton("-");
-		multiplyBtn= new JButton("*");
-		divideBtn= new JButton("/");
+	public int getSecondNumber() {
 
-		resetBtn= new JButton("C");
-		equalsBtn= new JButton("=");
-
-		panel.add(resetBtn);
-		panel.add(addBtn);
-		panel.add(subtractBtn);
-		panel.add(multiplyBtn);
-		panel.add(divideBtn);
-		panel.add(equalsBtn);
-
-		panel.setLayout(new GridLayout(3,3));
-
-		return panel;
+		return Integer.parseInt(secondNumber.getText());
 	}
 
-	void setTextValue(int value)
-	{
-		//sets textField to String value
-		textFeild.setText(Integer.toString(value));
+	public int getCalcSolution(){
+
+		return Integer.parseInt(calcSolution.getText());
 	}
 
-	//returns number currently in TextBox
-	int getTextFeildValue()
-	{
-		int value = Integer.parseInt(textFeild.getText());
+	public void setCalcSolution(int solution){
 
-		return value;
+		calcSolution.setText(Integer.toString(solution));
 	}
 
+//	als de calculatebutton is geklikt voert het een ActionPerformed uit in de controller
+	void addCalculationListener(ActionListener listenerForCalcButton){
 
+		calculateButton.addActionListener(listenerForCalcButton);
 
+	}
+
+//	opent een popu met een error als de gebruiker niet op juiste wijze dit heeft ingevoerd.
+	void displayErrorMessage(String errorMessage){
+
+		JOptionPane.showMessageDialog(this, errorMessage);
+	}
 }
